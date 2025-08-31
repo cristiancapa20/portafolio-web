@@ -83,7 +83,7 @@ function Historia() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white p-6 rounded-lg">
+    <div className="h-full bg-gray-900 text-white p-6 rounded-lg overflow-y-auto custom-scrollbar">
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
           <TimeLine data={achievementsData} title="Logros"/>

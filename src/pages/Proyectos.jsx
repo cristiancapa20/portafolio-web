@@ -8,8 +8,8 @@ const Proyectos = () => {
   const [activeTab, setActiveTab] = useState("react");
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white p-6  rounded-lg">
-      <div className="text-center mb-6">
+    <div className="h-full bg-gray-900 text-white p-6 rounded-lg flex flex-col">
+      <div className="text-center mb-6 flex-shrink-0">
         <ul className="flex flex-wrap justify-center text-sm font-medium text-center border-b border-gray-700">
           <li className="me-2">
             <a
@@ -53,11 +53,11 @@ const Proyectos = () => {
             </a>
           </li>
         </ul>
-        <div className="mt-6">
-          {activeTab === "react" && <ProyectosReact />}
-          {activeTab === "html" && <ProyectosHtml />}
-          {activeTab === "next" && <ProyectosNext />}
-        </div>
+      </div>
+      <div className="flex-1 overflow-y-auto custom-scrollbar">
+        {activeTab === "react" && <ProyectosReact />}
+        {activeTab === "html" && <ProyectosHtml />}
+        {activeTab === "next" && <ProyectosNext />}
       </div>
     </div>
   );

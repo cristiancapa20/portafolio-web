@@ -23,7 +23,7 @@ function Dashboard() {
     };
 
     return (
-        <div className="flex h-screen bg-gray-800">
+        <div className="flex min-h-screen bg-gray-800">
             {/* Sidebar */}
             <Sidebar />
 

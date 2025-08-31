@@ -21,10 +21,10 @@ function Historia() {
       location: "Catamayo-Loja, Ecuador",
     },
     {
-      date: "2018 - 2024",
+      date: "2018 - 2025",
       title: "Universidad",
       description:
-        "Universidad Nacional de Loja, donde estoy en mi último semestre",
+        "Universidad Nacional de Loja",
       location: "Loja, Ecuador",
     },
   ];

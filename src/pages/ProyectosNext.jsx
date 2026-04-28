@@ -1,17 +1,15 @@
 import React from 'react';
 import Card from '../components/Card';
 
-// Lista de proyectos
 const proyectos = [
   {
     title: "Barber Shop",
     img: require('../images/sharp-cuts.png'),
     enlaceSitio: "https://sharp-cuts-barber.vercel.app/",
-    botonSitio: "Visitar Sitio"
+    githubLink: "https://github.com/cristiancr20",
+    description: "Sitio web para barbería con galería de trabajos, servicios y sección de contacto.",
+    tags: ["Next.js", "Tailwind CSS"],
   },
-
-
-
 ];
 
 function ProyectosNext() {
@@ -24,6 +22,9 @@ function ProyectosNext() {
             title={proyecto.title}
             img={proyecto.img}
             enlaceSitio={proyecto.enlaceSitio}
+            description={proyecto.description}
+            tags={proyecto.tags}
+            githubLink={proyecto.githubLink}
           />
         ))}
       </div>

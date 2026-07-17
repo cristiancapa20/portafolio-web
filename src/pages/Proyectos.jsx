@@ -1,165 +1,179 @@
 import React from "react";
-import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
+import { useTranslation } from "react-i18next";
+import { FaGithub, FaExternalLinkAlt, FaGooglePlay } from "react-icons/fa";
 
 const featured = {
   title: "FinlyCR",
-  img: require("../images/finlycr.png"),
-  enlaceSitio: "https://www.finlycr.com/",
-  githubLink: "https://github.com/cristiancr20",
-  description:
-    "Aplicación web para gestión de finanzas personales: registra egresos e ingresos, gestiona cuentas bancarias y lleva seguimiento de préstamos y suscripciones. Disponible también como app móvil (PWA).",
-  tags: ["React", "Node.js", "MySQL", "Tailwind CSS", "PWA"],
+  img: require("../images/finlycr-web.png"),
+  mobileImg: require("../images/finlycr-mobile.jpeg"),
+  tags: ["React", "Node.js", "MySQL", "Tailwind CSS", "React Native"],
+  links: [
+    { type: "web", href: "https://www.finlycr.com/" },
+    {
+      type: "play",
+      href: "https://play.google.com/store/apps/details?id=com.capitacr.finlycr",
+    },
+    { type: "github", href: "https://github.com/cristiancr20" },
+  ],
 };
 
 const projects = [
   {
-    title: "Gym Vitality",
+    key: "gym",
     img: require("../images/gym-vitality.png"),
-    enlaceSitio: "https://gym-vitality.vercel.app/",
-    githubLink: "https://github.com/cristiancr20",
-    description: "Landing page para gimnasio con secciones de servicios, planes y contacto.",
     tags: ["React", "Tailwind CSS"],
-    inProgress: false,
+    links: [
+      { type: "web", href: "https://gym-vitality.vercel.app/" },
+      { type: "github", href: "https://github.com/cristiancr20" },
+    ],
   },
   {
-    title: "Barber Shop",
+    key: "barber",
     img: require("../images/sharp-cuts.png"),
-    enlaceSitio: "https://sharp-cuts-barber.vercel.app/",
-    githubLink: "https://github.com/cristiancr20",
-    description: "Sitio web para barbería con galería de trabajos, servicios y sección de contacto.",
     tags: ["Next.js", "Tailwind CSS"],
-    inProgress: false,
-  },
-  {
-    title: "FinlyCR Mobile",
-    img: require("../images/finlycr.png"),
-    enlaceSitio: null,
-    githubLink: "https://github.com/cristiancr20",
-    description: "App móvil de FinlyCR: gestión de finanzas personales en tu bolsillo. Disponible próximamente.",
-    tags: ["React Native", "Expo"],
-    inProgress: true,
+    links: [
+      { type: "web", href: "https://sharp-cuts-barber.vercel.app/" },
+      { type: "github", href: "https://github.com/cristiancr20" },
+    ],
   },
 ];
 
-function FeaturedCard({ title, img, enlaceSitio, githubLink, description, tags }) {
+const linkMeta = {
+  web: { icon: FaExternalLinkAlt, labelKey: "projects.verSitio" },
+  play: { icon: FaGooglePlay, labelKey: "projects.googlePlay" },
+  github: { icon: FaGithub, labelKey: "projects.github" },
+};
+
+function LinkRow({ links }) {
+  const { t } = useTranslation();
   return (
-    <div
-      className="bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 flex flex-col md:flex-row"
-    >
-      <a
-        href={enlaceSitio}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="md:w-1/2 flex-shrink-0"
-      >
-        <img
-          src={img}
-          alt={title}
-          className="w-full h-56 md:h-full object-cover object-top"
-        />
-      </a>
-      <div className="p-6 flex flex-col justify-between md:w-1/2">
-        <div>
-          <div className="flex items-center gap-2 mb-2">
-            <span className="text-xs font-semibold px-2 py-1 bg-yellow-400 text-gray-900 rounded-full">
-              Proyecto destacado
-            </span>
-          </div>
-          <h2 className="text-2xl font-bold text-white mb-3">{title}</h2>
-          <p className="text-gray-400 text-sm leading-relaxed mb-4">{description}</p>
-          <div className="flex flex-wrap gap-2 mb-5">
-            {tags.map((tag, i) => (
-              <span key={i} className="px-2 py-1 bg-gray-700 text-yellow-400 text-xs rounded-full">
-                {tag}
-              </span>
-            ))}
-          </div>
-        </div>
-        <div className="flex gap-4">
+    <div className="flex flex-wrap items-center gap-4">
+      {links.map(({ type, href }) => {
+        const { icon: Icon, labelKey } = linkMeta[type];
+        return (
           <a
-            href={enlaceSitio}
+            key={type}
+            href={href}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 bg-yellow-400 text-gray-900 font-semibold px-4 py-2 rounded-lg hover:bg-yellow-300 transition-colors text-sm"
+            className="inline-flex items-center gap-2 text-sm text-muted hover:text-accent transition-colors"
           >
-            <FaExternalLinkAlt size={12} /> Ver sitio
+            <Icon size={type === "github" ? 15 : 13} />
+            {t(labelKey)}
           </a>
-          {githubLink && (
-            <a
-              href={githubLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 bg-gray-700 text-white px-4 py-2 rounded-lg hover:bg-gray-600 transition-colors text-sm"
-            >
-              <FaGithub size={14} /> GitHub
-            </a>
-          )}
-        </div>
-      </div>
+        );
+      })}
     </div>
   );
 }
 
-function Card({ title, img, enlaceSitio, githubLink, description, tags, inProgress }) {
+function Tags({ tags }) {
   return (
-    <div className="bg-gray-800 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col">
-      <div className="relative">
-        <img src={img} alt={title} className="w-full h-44 object-cover" />
-        {inProgress && (
-          <span className="absolute top-2 right-2 bg-yellow-400 text-gray-900 text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-wide">
-            En progreso
-          </span>
-        )}
-      </div>
-      <div className="p-4 flex flex-col flex-1">
-        <h3 className="text-lg font-semibold text-white mb-2">{title}</h3>
-        <p className="text-gray-400 text-sm mb-3 flex-1">{description}</p>
-        <div className="flex flex-wrap gap-2 mb-3">
-          {tags.map((tag, i) => (
-            <span key={i} className="px-2 py-1 bg-gray-700 text-yellow-400 text-xs rounded-full">
-              {tag}
-            </span>
-          ))}
-        </div>
-        <div className="flex gap-4 pt-2 border-t border-gray-700">
-          {enlaceSitio && (
-            <a
-              href={enlaceSitio}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-1 text-sm text-yellow-400 hover:text-yellow-300 transition-colors"
-            >
-              <FaExternalLinkAlt size={11} /> Ver sitio
-            </a>
-          )}
-          {githubLink && (
-            <a
-              href={githubLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-1 text-sm text-gray-400 hover:text-white transition-colors"
-            >
-              <FaGithub size={13} /> GitHub
-            </a>
-          )}
-        </div>
-      </div>
+    <div className="flex flex-wrap gap-2">
+      {tags.map((tag) => (
+        <span
+          key={tag}
+          className="font-mono text-xs text-muted bg-white/5 border border-line px-2.5 py-1 rounded-md"
+        >
+          {tag}
+        </span>
+      ))}
     </div>
+  );
+}
+
+function ProjectCard({ title, img, description, tags, links }) {
+  return (
+    <article className="group bg-surface border border-line rounded-xl overflow-hidden hover:-translate-y-1 hover:border-accent/30 transition-all duration-300 h-full flex flex-col">
+      <div className="aspect-video overflow-hidden bg-surface-2">
+        <img
+          src={img}
+          alt={title}
+          className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+        />
+      </div>
+      <div className="p-5 flex flex-col gap-4 flex-1">
+        <div>
+          <h3 className="font-display text-lg font-semibold text-content mb-2">
+            {title}
+          </h3>
+          <p className="text-sm text-muted leading-relaxed">{description}</p>
+        </div>
+        <Tags tags={tags} />
+        <div className="pt-3 mt-auto border-t border-line">
+          <LinkRow links={links} />
+        </div>
+      </div>
+    </article>
   );
 }
 
 const Proyectos = () => {
+  const { t } = useTranslation();
   return (
-    <div className="h-full bg-gray-900 text-white p-6 rounded-lg overflow-y-auto">
-      <div className="max-w-4xl mx-auto flex flex-col gap-6">
-        <FeaturedCard {...featured} />
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.map((p, i) => (
-            <Card key={i} {...p} />
-          ))}
-        </div>
+    <section id="proyectos" className="max-w-content mx-auto px-6 py-24 md:py-32">
+      <div className="flex items-center gap-4 mb-14" data-aos="fade-up">
+        <span className="font-mono text-accent text-sm">01.</span>
+        <h2 className="font-display text-3xl md:text-4xl font-bold text-content">
+          {t("projects.title")}
+        </h2>
+        <span className="flex-1 h-px bg-line" />
       </div>
-    </div>
+
+      {/* Destacado */}
+      <article
+        className="group bg-surface border border-line rounded-2xl overflow-hidden flex flex-col lg:flex-row mb-8 hover:border-accent/30 transition-colors"
+        data-aos="fade-up"
+      >
+        <div className="lg:w-1/2 relative overflow-hidden bg-gradient-to-br from-[#6d4bd8] to-[#452bbd] flex items-center justify-center p-8 min-h-[300px]">
+          {/* Screenshot web */}
+          <img
+            src={featured.img}
+            alt={`${featured.title} web`}
+            className="w-full max-w-md rounded-lg border border-black/20 shadow-2xl group-hover:scale-[1.02] transition-transform duration-500"
+          />
+          {/* Screenshot móvil superpuesto */}
+          <img
+            src={featured.mobileImg}
+            alt={`${featured.title} móvil`}
+            className="absolute bottom-6 right-6 w-20 sm:w-24 rounded-xl border-4 border-black/40 shadow-2xl"
+          />
+        </div>
+        <div className="lg:w-1/2 p-8 flex flex-col justify-center gap-5">
+          <span className="font-mono text-xs text-accent uppercase tracking-widest">
+            {t("projects.featured")}
+          </span>
+          <div>
+            <h3 className="font-display text-2xl md:text-3xl font-bold text-content mb-1">
+              {featured.title}
+            </h3>
+            <p className="text-muted text-sm">{t("projects.finly.tagline")}</p>
+          </div>
+          <p className="text-muted leading-relaxed">
+            {t("projects.finly.description")}
+          </p>
+          <Tags tags={featured.tags} />
+          <div className="pt-2">
+            <LinkRow links={featured.links} />
+          </div>
+        </div>
+      </article>
+
+      {/* Grid de proyectos secundarios */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {projects.map((p, i) => (
+          <div key={p.key} data-aos="fade-up" data-aos-delay={i * 80}>
+            <ProjectCard
+              title={t(`projects.${p.key}.title`)}
+              description={t(`projects.${p.key}.description`)}
+              img={p.img}
+              tags={p.tags}
+              links={p.links}
+            />
+          </div>
+        ))}
+      </div>
+    </section>
   );
 };
 

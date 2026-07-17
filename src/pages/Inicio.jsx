@@ -1,100 +1,90 @@
 import React from "react";
-import Typewriter from "typewriter-effect";
-import {
-  SiReact,
-  SiNextdotjs,
-  SiJavascript,
-  SiTailwindcss,
-  SiNodedotjs,
-  SiGit,
-  SiMysql,
-} from "react-icons/si";
-import { FaMobileAlt } from "react-icons/fa";
+import { useTranslation, Trans } from "react-i18next";
+import { FaGithub, FaLinkedin, FaArrowRight } from "react-icons/fa";
+import { MdEmail } from "react-icons/md";
+import foto from "../images/cristian-capa.jpeg";
 
-const skills = [
-  { icon: SiJavascript, name: "JavaScript", color: "text-yellow-400" },
-  { icon: SiReact, name: "React", color: "text-blue-400" },
-  { icon: SiNextdotjs, name: "Next.js", color: "text-white" },
-  { icon: SiNodedotjs, name: "Node.js", color: "text-green-400" },
-  { icon: SiTailwindcss, name: "Tailwind CSS", color: "text-cyan-400" },
-  { icon: SiMysql, name: "MySQL", color: "text-blue-300" },
-  { icon: SiGit, name: "Git", color: "text-orange-400" },
-  { icon: FaMobileAlt, name: "React Native", color: "text-purple-400" },
+const socials = [
+  { icon: FaGithub, href: "https://github.com/cristiancr20", label: "GitHub" },
+  {
+    icon: FaLinkedin,
+    href: "https://www.linkedin.com/in/cristian-capa-834243205/",
+    label: "LinkedIn",
+  },
+  { icon: MdEmail, href: "mailto:cristian.capa20@gmail.com", label: "Email" },
 ];
 
 const Inicio = () => {
+  const { t } = useTranslation();
   return (
-    <div className="w-full h-full flex flex-col items-center justify-start bg-gray-900 text-white p-6 rounded-lg overflow-y-auto">
+    <section
+      id="inicio"
+      className="relative grid-bg min-h-[calc(100vh-72px)] flex items-center"
+    >
+      <div className="absolute inset-0 hero-glow pointer-events-none" />
+      <div className="relative max-w-content mx-auto px-6 w-full py-20">
+        <div className="grid md:grid-cols-[1.4fr_1fr] gap-12 items-center">
+          {/* Texto */}
+          <div className="animate-fade-up">
+            <p className="font-mono text-accent text-sm mb-5 flex items-center gap-2">
+              <span className="inline-block w-8 h-px bg-accent" />
+              {t("hero.eyebrow")}
+            </p>
+            <h1 className="font-display font-bold text-content leading-[1.05] tracking-tight text-5xl sm:text-6xl lg:text-7xl mb-6">
+              Cristian Capa
+            </h1>
+            <p className="text-muted text-lg leading-relaxed max-w-xl mb-8">
+              <Trans
+                i18nKey="hero.intro"
+                components={{ hl: <span className="text-content" /> }}
+              />
+            </p>
 
-      {/* Hero */}
-      <div className="text-center max-w-2xl mb-8 mt-4 lg:mt-10" data-aos="fade-down">
-        <div className="text-xl font-bold mb-3 text-gray-400 min-h-[2rem]">
-          <Typewriter
-            options={{
-              strings: [
-                "Desarrollador Web Full Stack",
-                "Desarrollador React & Next.js",
-                "Desarrollador Mobile",
-                "Creador de Soluciones Digitales",
-              ],
-              autoStart: true,
-              loop: true,
-              delay: 75,
-              cursor: "_",
-            }}
-          />
-        </div>
-        <h1 className="text-3xl font-bold mb-4 text-yellow-300">
-          ¡Hola, soy Cristian!
-        </h1>
-        <p className="text-gray-300 text-base leading-relaxed">
-          Desarrollador web con experiencia en empresa, apasionado por construir
-          aplicaciones web y mobile que resuelven problemas reales. Actualmente
-          desarrollo una app de control de finanzas personales y su versión mobile.
-        </p>
-      </div>
-
-      {/* Stats */}
-      <div
-        className="grid grid-cols-3 gap-2 sm:gap-4 mb-8 w-full max-w-lg"
-        data-aos="fade-up"
-        data-aos-delay="150"
-      >
-        <div className="text-center bg-gray-800 rounded-lg p-3 sm:p-4">
-          <p className="text-2xl sm:text-3xl font-bold text-yellow-400">1+</p>
-          <p className="text-[10px] sm:text-xs text-gray-400 mt-1">Experiencia</p>
-        </div>
-        <div className="text-center bg-gray-800 rounded-lg p-3 sm:p-4">
-          <p className="text-2xl sm:text-3xl font-bold text-yellow-400">10+</p>
-          <p className="text-[10px] sm:text-xs text-gray-400 mt-1">Proyectos</p>
-        </div>
-        <div className="text-center bg-gray-800 rounded-lg p-3 sm:p-4">
-          <p className="text-2xl sm:text-3xl font-bold text-yellow-400">2</p>
-          <p className="text-[10px] sm:text-xs text-gray-400 mt-1">Apps activas</p>
-        </div>
-      </div>
-
-      {/* Skills */}
-      <div className="w-full max-w-2xl" data-aos="fade-up" data-aos-delay="300">
-        <h2 className="text-lg font-bold text-center text-yellow-300 mb-5">
-          Tecnologías
-        </h2>
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-          {skills.map(({ icon: Icon, name, color }, index) => (
-            <div
-              key={name}
-              className="flex flex-col items-center gap-2 bg-gray-800 rounded-lg p-3 hover:bg-gray-700 transition-colors"
-              data-aos="zoom-in"
-              data-aos-delay={350 + index * 50}
-            >
-              <Icon size={28} className={color} />
-              <span className="text-xs text-gray-300 text-center">{name}</span>
+            <div className="flex flex-wrap items-center gap-4 mb-10">
+              <a
+                href="#proyectos"
+                className="inline-flex items-center gap-2 bg-accent text-bg font-semibold px-6 py-3 rounded-lg hover:bg-accent-soft transition-colors"
+              >
+                {t("hero.verProyectos")} <FaArrowRight size={14} />
+              </a>
+              <a
+                href="#contacto"
+                className="inline-flex items-center gap-2 border border-line text-content font-medium px-6 py-3 rounded-lg hover:border-accent/50 hover:text-accent transition-colors"
+              >
+                {t("hero.contacto")}
+              </a>
             </div>
-          ))}
+
+            <div className="flex items-center gap-5">
+              {socials.map(({ icon: Icon, href, label }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target={href.startsWith("mailto") ? "_self" : "_blank"}
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  className="text-muted hover:text-accent transition-colors"
+                >
+                  <Icon size={22} />
+                </a>
+              ))}
+            </div>
+          </div>
+
+          {/* Foto */}
+          <div className="hidden md:flex justify-center animate-fade-up">
+            <div className="relative">
+              <div className="absolute -inset-3 rounded-3xl bg-accent/10 blur-2xl" />
+              <img
+                src={foto}
+                alt="Cristian Capa"
+                className="relative w-64 h-80 object-cover object-top rounded-2xl border border-line grayscale hover:grayscale-0 transition-all duration-500"
+              />
+            </div>
+          </div>
         </div>
       </div>
-
-    </div>
+    </section>
   );
 };
 

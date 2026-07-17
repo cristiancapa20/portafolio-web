@@ -1,30 +1,68 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Estilos personalizados para el scroll */
-.custom-scrollbar::-webkit-scrollbar {
-  width: 8px;
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 88px; /* deja aire bajo la navbar sticky al saltar a un ancla */
+  }
+
+  body {
+    background-color: #0b0c0e;
+    color: #e6e7e9;
+    font-family: "Inter", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background-color: rgba(224, 179, 65, 0.25);
+    color: #ffffff;
+  }
 }
 
-.custom-scrollbar::-webkit-scrollbar-track {
-  background: #1f2937; /* bg-gray-800 */
-  border-radius: 4px;
+/* Scrollbar acorde a la paleta */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #0b0c0e;
+}
+::-webkit-scrollbar-thumb {
+  background: #2a2d34;
+  border-radius: 6px;
+  border: 2px solid #0b0c0e;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3a3e46;
 }
 
-.custom-scrollbar::-webkit-scrollbar-thumb {
-  background: #fbbf24; /* bg-yellow-400 */
-  border-radius: 4px;
-  transition: background 0.3s ease;
+/* Resplandor suave detrás del hero */
+.hero-glow {
+  background: radial-gradient(
+    600px circle at 20% 20%,
+    rgba(224, 179, 65, 0.1),
+    transparent 60%
+  );
 }
 
-.custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: #f59e0b; /* bg-yellow-500 */
+/* Grid tenue de fondo, estilo blueprint */
+.grid-bg {
+  background-image: linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 40px 40px;
 }
 
-/* Para Firefox */
-.custom-scrollbar {
-  scrollbar-width: thin;
-  scrollbar-color: #fbbf24 #1f2937; /* thumb track */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

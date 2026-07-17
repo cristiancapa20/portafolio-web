@@ -1,0 +1,85 @@
+{
+  "nav": {
+    "inicio": "Inicio",
+    "proyectos": "Proyectos",
+    "sobremi": "Sobre mí",
+    "contacto": "Contacto",
+    "cv": "CV",
+    "descargarCV": "Descargar CV"
+  },
+  "hero": {
+    "eyebrow": "Desarrollador de Software",
+    "intro": "Construyo aplicaciones web y móviles full-stack con <hl>React, Next.js y Node.js</hl>. Actualmente desarrollo <hl>FinlyCR</hl>, una plataforma de finanzas personales, ya disponible en web y en Google Play.",
+    "verProyectos": "Ver proyectos",
+    "contacto": "Contacto"
+  },
+  "projects": {
+    "title": "Proyectos",
+    "featured": "Proyecto destacado",
+    "verSitio": "Ver sitio",
+    "googlePlay": "Google Play",
+    "github": "GitHub",
+    "finly": {
+      "tagline": "Plataforma de finanzas personales · web y móvil",
+      "description": "Aplicación full-stack para gestión de finanzas personales: registro de ingresos y egresos, cuentas bancarias, seguimiento de préstamos y suscripciones, con panel de estadísticas. Disponible como web (PWA) y app móvil publicada en Google Play."
+    },
+    "gym": {
+      "title": "Gym Vitality",
+      "description": "Landing page para gimnasio con secciones de servicios, planes y contacto."
+    },
+    "barber": {
+      "title": "Barber Shop",
+      "description": "Sitio web para barbería con galería de trabajos, servicios y sección de contacto."
+    }
+  },
+  "about": {
+    "title": "Sobre mí",
+    "bioTitle": "Hola, soy Cristian 👋",
+    "bio1": "Desarrollador de software con experiencia construyendo aplicaciones web y móviles de principio a fin. Me gusta llevar una idea desde el diseño hasta producción, cuidando tanto la interfaz como la lógica y la base de datos.",
+    "bio2": "Soy Ingeniero en Ciencias de la Computación y trabajo con el ecosistema de JavaScript: React, Next.js, Node.js y React Native.",
+    "nowLabel": "// Ahora",
+    "now": "Desarrollando <acc>FinlyCR</acc>, una plataforma de finanzas personales en web y móvil.",
+    "inProduction": "Disponible en producción",
+    "techLabel": "Tecnologías",
+    "experienceLabel": "Experiencia",
+    "experience": {
+      "lambdo": {
+        "date": "may. 2025 — actualidad · 1 año 3 meses",
+        "title": "Desarrollador de Software",
+        "org": "Lambdo · Jornada completa",
+        "location": "Remoto"
+      },
+      "kirios": {
+        "date": "may. 2024 — jul. 2024 · 3 meses",
+        "title": "Pasante",
+        "org": "Kiriosnet · Desarrollo web y front end",
+        "location": "Loja, Ecuador · Presencial"
+      },
+      "nodo": {
+        "date": "oct. 2022 — feb. 2023 · 5 meses",
+        "title": "Pasante",
+        "org": "NODO Cía. Ltda. · HTML5 y front end",
+        "location": "Ecuador"
+      }
+    },
+    "educationLabel": "Educación",
+    "education": {
+      "title": "Ingeniería en Ciencias de la Computación",
+      "org": "Universidad Nacional de Loja",
+      "meta": "2018 — 2025 · Loja, Ecuador"
+    },
+    "achievementLabel": "Logro",
+    "achievement": {
+      "title": "CTF Internacional TIC MetaRed 2023",
+      "desc": "Ganador de la quinta etapa a nivel de universidades."
+    }
+  },
+  "contact": {
+    "eyebrow": "¿Hablamos?",
+    "title": "¿Tienes un proyecto en mente?",
+    "description": "Estoy disponible para nuevas oportunidades: freelance, trabajo en equipo o simplemente charlar sobre tecnología. Mi bandeja está abierta.",
+    "sendEmail": "Enviar email",
+    "copied": "¡Email copiado!",
+    "footer": "Diseñado y desarrollado con React & Tailwind CSS"
+  }
+}

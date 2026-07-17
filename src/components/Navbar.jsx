@@ -1,185 +1,144 @@
-import React, { useState } from 'react';
-import { FaBars, FaTimes, FaGithub, FaInstagram, FaTiktok, FaYoutube, FaLinkedin, FaGraduationCap, FaUser, FaEnvelope } from 'react-icons/fa';
-import { BiHomeAlt2, BiCategory } from "react-icons/bi";
-import { MdEmail } from "react-icons/md";
+import React, { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
+import { FaBars, FaTimes } from "react-icons/fa";
 import { IoCloudDownloadOutline } from "react-icons/io5";
-import foto from "../images/cristian-capa.jpeg";
 
-const sectionNames = {
-    'Inicio': 'Inicio',
-    'Proyectos': 'Proyectos',
-    'SobreMi': 'Sobre Mí',
-    'Contacto': 'Contacto',
-};
+const ids = ["inicio", "proyectos", "sobremi", "contacto"];
 
-function Navbar({ activeSection, setActiveSection }) {
-    const [menuOpen, setMenuOpen] = useState(false);
+function LangToggle({ className = "" }) {
+  const { i18n } = useTranslation();
+  const current = (i18n.resolvedLanguage || i18n.language || "es").slice(0, 2);
+  const other = current === "es" ? "en" : "es";
+  return (
+    <button
+      onClick={() => i18n.changeLanguage(other)}
+      aria-label={`Cambiar idioma a ${other.toUpperCase()}`}
+      className={`font-mono text-xs font-medium border border-line rounded-md px-2 py-1 text-muted hover:text-accent hover:border-accent/50 transition-colors ${className}`}
+    >
+      <span className={current === "es" ? "text-accent" : ""}>ES</span>
+      <span className="text-muted/40 mx-1">/</span>
+      <span className={current === "en" ? "text-accent" : ""}>EN</span>
+    </button>
+  );
+}
 
-    const handleClick = (section) => {
-        setActiveSection(section);
-        setMenuOpen(false);
-    };
+function Navbar() {
+  const { t } = useTranslation();
+  const [active, setActive] = useState("inicio");
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
-    const toggleMenu = () => {
-        setMenuOpen(!menuOpen);
-    };
-
-    return (
-        <div className="bg-gray-800 text-white sticky top-0 w-full z-50">
-            <div className="flex items-center justify-between max-w-screen-lg mx-auto p-4">
-                <div className='text-2xl font-bold text-yellow-400'>
-                    {sectionNames[activeSection] || activeSection}
-                </div>
-
-                <div className='lg:hidden cursor-pointer' onClick={toggleMenu}>
-                    {menuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
-                </div>
-
-                <ul className='hidden lg:flex lg:items-center lg:space-x-6'>
-                    <li>
-                        <button onClick={() => handleClick('Inicio')} className='flex items-center px-4 py-2 text-lg hover:bg-gray-700 transition-colors rounded-lg'>
-                            <BiHomeAlt2 className='mr-2 text-yellow-400' size={20} /> Inicio
-                        </button>
-                    </li>
-                    <li>
-                        <button onClick={() => handleClick('Proyectos')} className='flex items-center px-4 py-2 text-lg hover:bg-gray-700 transition-colors rounded-lg'>
-                            <BiCategory className='mr-2 text-yellow-400' size={20} /> Proyectos
-                        </button>
-                    </li>
-                    <li>
-                        <button onClick={() => handleClick('SobreMi')} className='flex items-center px-4 py-2 text-lg hover:bg-gray-700 transition-colors rounded-lg'>
-                            <FaUser className='mr-2 text-yellow-400' size={18} /> Sobre Mí
-                        </button>
-                    </li>
-                    <li>
-                        <button onClick={() => handleClick('Contacto')} className='flex items-center px-4 py-2 text-lg hover:bg-gray-700 transition-colors rounded-lg'>
-                            <FaEnvelope className='mr-2 text-yellow-400' size={18} /> Contacto
-                        </button>
-                    </li>
-                </ul>
-            </div>
-
-            {/* Menú móvil */}
-            <div className={`lg:hidden fixed top-16 left-0 w-full h-screen bg-gray-900 shadow-lg transform transition-all duration-300 ease-in-out overflow-y-auto ${
-                menuOpen ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-full pointer-events-none'
-            }`}>
-                <div className="p-6 pb-20">
-                    {/* Perfil */}
-                    <div className="flex items-center mb-6 p-4 bg-gray-800 rounded-lg">
-                        <img src={foto} alt="Cristian Capa" className="w-12 h-14 rounded-xl object-cover object-top mr-4" />
-                        <div>
-                            <h2 className="text-xl font-bold text-white">Cristian Capa</h2>
-                            <p className="text-sm text-gray-400">Desarrollador Web</p>
-                        </div>
-                    </div>
-
-                    {/* Navegación */}
-                    <div className="mb-6">
-                        <h3 className="text-lg font-bold text-yellow-400 mb-4">NAVEGACIÓN</h3>
-                        <ul className="space-y-2">
-                            <li>
-                                <button
-                                    onClick={() => handleClick('Inicio')}
-                                    className={`flex items-center px-4 py-3 text-lg hover:bg-gray-800 w-full transition-colors rounded-lg ${
-                                        activeSection === 'Inicio' ? 'bg-gray-800 text-yellow-400' : 'text-white'
-                                    }`}
-                                >
-                                    <BiHomeAlt2 className="mr-3 text-yellow-400" size={20} />
-                                    Inicio
-                                </button>
-                            </li>
-                            <li>
-                                <button
-                                    onClick={() => handleClick('Proyectos')}
-                                    className={`flex items-center px-4 py-3 text-lg hover:bg-gray-800 w-full transition-colors rounded-lg ${
-                                        activeSection === 'Proyectos' ? 'bg-gray-800 text-yellow-400' : 'text-white'
-                                    }`}
-                                >
-                                    <BiCategory className="mr-3 text-yellow-400" size={20} />
-                                    Proyectos
-                                </button>
-                            </li>
-                            <li>
-                                <button
-                                    onClick={() => handleClick('SobreMi')}
-                                    className={`flex items-center px-4 py-3 text-lg hover:bg-gray-800 w-full transition-colors rounded-lg ${
-                                        activeSection === 'SobreMi' ? 'bg-gray-800 text-yellow-400' : 'text-white'
-                                    }`}
-                                >
-                                    <FaUser className="mr-3 text-yellow-400" size={18} />
-                                    Sobre Mí
-                                </button>
-                            </li>
-                            <li>
-                                <button
-                                    onClick={() => handleClick('Contacto')}
-                                    className={`flex items-center px-4 py-3 text-lg hover:bg-gray-800 w-full transition-colors rounded-lg ${
-                                        activeSection === 'Contacto' ? 'bg-gray-800 text-yellow-400' : 'text-white'
-                                    }`}
-                                >
-                                    <FaEnvelope className="mr-3 text-yellow-400" size={18} />
-                                    Contacto
-                                </button>
-                            </li>
-                        </ul>
-                    </div>
-
-                    {/* Información */}
-                    <div className="mb-6">
-                        <h3 className="text-lg font-bold text-yellow-400 mb-4">INFORMACIÓN</h3>
-
-                        <div className="w-full mb-3 hover:bg-gray-800 p-3 rounded-lg flex items-center gap-4 cursor-default">
-                            <MdEmail size={20} className="text-yellow-400 flex-shrink-0" />
-                            <div className="flex flex-col">
-                                <h4 className="font-bold text-white text-sm">Email</h4>
-                                <p className="text-xs text-gray-300">cristian.capa20@gmail.com</p>
-                            </div>
-                        </div>
-
-                        <div className="w-full mb-3 hover:bg-gray-800 p-3 rounded-lg flex items-center gap-4 cursor-default">
-                            <FaGraduationCap size={20} className="text-yellow-400 flex-shrink-0" />
-                            <div className="flex flex-col">
-                                <h4 className="font-bold text-white text-sm">Estudios</h4>
-                                <p className="text-xs text-gray-300">Ingeniero en Ciencias de la Computación</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Redes Sociales */}
-                    <div className="mb-6">
-                        <h3 className="text-lg font-bold text-yellow-400 mb-4">REDES SOCIALES</h3>
-                        <div className="grid grid-cols-5 gap-4">
-                            <a href="https://www.linkedin.com/in/cristian-capa-834243205/" target="_blank" rel="noopener noreferrer" className="hover:text-yellow-400 flex justify-center transition-colors">
-                                <FaLinkedin size={24} />
-                            </a>
-                            <a href="https://github.com/cristiancr20" target="_blank" rel="noopener noreferrer" className="hover:text-yellow-400 flex justify-center transition-colors">
-                                <FaGithub size={24} />
-                            </a>
-                            <a href="https://www.instagram.com/capita_cr/" target="_blank" rel="noopener noreferrer" className="hover:text-yellow-400 flex justify-center transition-colors">
-                                <FaInstagram size={24} />
-                            </a>
-                            <a href="https://www.tiktok.com/@capitacr.code" target="_blank" rel="noopener noreferrer" className="hover:text-yellow-400 flex justify-center transition-colors">
-                                <FaTiktok size={24} />
-                            </a>
-                            <a href="https://www.youtube.com/channel/UCA5siuRO1Ulb8OM35fXe-0Q" target="_blank" rel="noopener noreferrer" className="hover:text-yellow-400 flex justify-center transition-colors">
-                                <FaYoutube size={24} />
-                            </a>
-                        </div>
-                    </div>
-
-                    {/* Descargar CV */}
-                    <a
-                        href="/CV_Cristian_Capa.pdf"
-                        download="Cristian_Capa_CV.pdf"
-                        className="w-full bg-yellow-400 text-gray-900 hover:bg-yellow-300 p-3 rounded-lg flex items-center justify-center transition-colors font-semibold"
-                    >
-                        <IoCloudDownloadOutline size={20} className="text-gray-900 mr-2" />
-                        Descargar CV
-                    </a>
-                </div>
-            </div>
-        </div>
+  // Scroll-spy: resalta la sección visible
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActive(entry.target.id);
+        });
+      },
+      { rootMargin: "-45% 0px -50% 0px" }
     );
+    ids.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    onScroll();
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  return (
+    <header
+      className={`sticky top-0 z-50 transition-colors duration-300 ${
+        scrolled ? "bg-bg/80 backdrop-blur-md border-b border-line" : "bg-transparent"
+      }`}
+    >
+      <nav className="max-w-content mx-auto flex items-center justify-between px-6 h-[72px]">
+        <a
+          href="#inicio"
+          className="font-display font-bold text-lg tracking-tight text-content"
+        >
+          Cristian<span className="text-accent">.</span>
+        </a>
+
+        {/* Desktop */}
+        <div className="hidden md:flex items-center gap-1">
+          {ids.map((id, i) => (
+            <a
+              key={id}
+              href={`#${id}`}
+              className={`px-3 py-2 text-sm font-medium rounded-md transition-colors ${
+                active === id ? "text-accent" : "text-muted hover:text-content"
+              }`}
+            >
+              <span className="font-mono text-accent/60 mr-1 text-xs">
+                {String(i + 1).padStart(2, "0")}.
+              </span>
+              {t(`nav.${id}`)}
+            </a>
+          ))}
+          <a
+            href="/CV_Cristian_Capa.pdf"
+            download="Cristian_Capa_CV.pdf"
+            className="ml-3 inline-flex items-center gap-2 border border-accent/40 text-accent hover:bg-accent/10 text-sm font-medium px-4 py-2 rounded-md transition-colors"
+          >
+            <IoCloudDownloadOutline size={16} /> {t("nav.cv")}
+          </a>
+          <LangToggle className="ml-2" />
+        </div>
+
+        {/* Botón móvil */}
+        <div className="md:hidden flex items-center gap-3">
+          <LangToggle />
+          <button
+            className="text-content"
+            onClick={() => setMenuOpen((v) => !v)}
+            aria-label="Menú"
+          >
+            {menuOpen ? <FaTimes size={22} /> : <FaBars size={22} />}
+          </button>
+        </div>
+      </nav>
+
+      {/* Menú móvil */}
+      <div
+        className={`md:hidden overflow-hidden transition-all duration-300 bg-bg/95 backdrop-blur-md border-b border-line ${
+          menuOpen ? "max-h-96" : "max-h-0"
+        }`}
+      >
+        <div className="flex flex-col px-6 py-4 gap-1">
+          {ids.map((id, i) => (
+            <a
+              key={id}
+              href={`#${id}`}
+              onClick={() => setMenuOpen(false)}
+              className={`py-3 text-base font-medium ${
+                active === id ? "text-accent" : "text-content"
+              }`}
+            >
+              <span className="font-mono text-accent/60 mr-2 text-sm">
+                {String(i + 1).padStart(2, "0")}.
+              </span>
+              {t(`nav.${id}`)}
+            </a>
+          ))}
+          <a
+            href="/CV_Cristian_Capa.pdf"
+            download="Cristian_Capa_CV.pdf"
+            onClick={() => setMenuOpen(false)}
+            className="mt-2 inline-flex items-center justify-center gap-2 bg-accent text-bg font-semibold px-4 py-3 rounded-md"
+          >
+            <IoCloudDownloadOutline size={18} /> {t("nav.descargarCV")}
+          </a>
+        </div>
+      </div>
+    </header>
+  );
 }
 
 export default Navbar;

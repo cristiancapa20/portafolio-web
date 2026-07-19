@@ -16,7 +16,7 @@ const EMAIL = "cristian.capa20@gmail.com";
 
 const socials = [
   { icon: FaLinkedin, href: "https://www.linkedin.com/in/cristian-capa-834243205/", label: "LinkedIn" },
-  { icon: FaGithub, href: "https://github.com/cristiancr20", label: "GitHub" },
+  { icon: FaGithub, href: "https://github.com/cristiancapa20", label: "GitHub" },
   { icon: FaXTwitter, href: "https://x.com/ca95010", label: "X" },
   { icon: FaInstagram, href: "https://www.instagram.com/capita_cr/", label: "Instagram" },
   { icon: FaTiktok, href: "https://www.tiktok.com/@capitacr.code", label: "TikTok" },

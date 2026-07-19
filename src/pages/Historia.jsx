@@ -4,22 +4,30 @@ import {
   SiReact,
   SiNextdotjs,
   SiJavascript,
+  SiTypescript,
   SiTailwindcss,
   SiNodedotjs,
   SiGit,
-  SiMysql,
+  SiFlutter,
+  SiElixir,
+  SiExpo,
+  SiGraphql,
 } from "react-icons/si";
 import { FaMobileAlt, FaGraduationCap, FaTrophy } from "react-icons/fa";
 
 const skills = [
+  { icon: SiTypescript, name: "TypeScript", hover: "hover:text-blue-400" },
   { icon: SiJavascript, name: "JavaScript", hover: "hover:text-yellow-400" },
   { icon: SiReact, name: "React", hover: "hover:text-blue-400" },
   { icon: SiNextdotjs, name: "Next.js", hover: "hover:text-content" },
-  { icon: SiNodedotjs, name: "Node.js", hover: "hover:text-green-400" },
-  { icon: SiTailwindcss, name: "Tailwind", hover: "hover:text-cyan-400" },
-  { icon: SiMysql, name: "MySQL", hover: "hover:text-blue-300" },
-  { icon: SiGit, name: "Git", hover: "hover:text-orange-400" },
   { icon: FaMobileAlt, name: "React Native", hover: "hover:text-purple-400" },
+  { icon: SiExpo, name: "Expo", hover: "hover:text-content" },
+  { icon: SiFlutter, name: "Flutter", hover: "hover:text-sky-400" },
+  { icon: SiNodedotjs, name: "Node.js", hover: "hover:text-green-400" },
+  { icon: SiElixir, name: "Elixir", hover: "hover:text-purple-300" },
+  { icon: SiGraphql, name: "GraphQL", hover: "hover:text-pink-400" },
+  { icon: SiTailwindcss, name: "Tailwind", hover: "hover:text-cyan-400" },
+  { icon: SiGit, name: "Git", hover: "hover:text-orange-400" },
 ];
 
 const experienceKeys = ["lambdo", "kirios", "nodo"];

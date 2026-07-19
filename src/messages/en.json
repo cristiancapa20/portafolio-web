@@ -8,8 +8,8 @@
     "descargarCV": "Download CV"
   },
   "hero": {
-    "eyebrow": "Software Developer",
-    "intro": "I build full-stack web and mobile applications with <hl>React, Next.js and Node.js</hl>. I'm currently developing <hl>FinlyCR</hl>, a personal finance platform, already available on the web and on Google Play.",
+    "eyebrow": "Software Engineer",
+    "intro": "Computer Science engineer focused on <hl>mobile development (Flutter, React Native)</hl>, <hl>backend services (Elixir/Ash, Node.js)</hl> and <hl>AI-assisted development workflows</hl>. Currently at Lambdo and building FinlyCR, my personal-finance app on Google Play.",
     "verProyectos": "View projects",
     "contacto": "Contact"
   },
@@ -19,9 +19,32 @@
     "verSitio": "Visit site",
     "googlePlay": "Google Play",
     "github": "GitHub",
+    "companyBadge": "Company project",
+    "inProgress": "In progress",
+    "otrosLabel": "Other projects",
     "finly": {
       "tagline": "Personal finance platform · web and mobile",
-      "description": "Full-stack application for personal finance management: income and expense tracking, bank accounts, loan and subscription tracking, with a statistics dashboard. Available as a web app (PWA) and a mobile app published on Google Play."
+      "description": "Full-stack app for personal finance management: income, expenses, loans and subscriptions, with a charts dashboard, offline mode with a sync queue and personal/family multi-tenancy. Web in Next.js and a mobile app in Expo/React Native published on Google Play, over a single Turso database."
+    },
+    "community": {
+      "title": "Community · iTOVi × Droplii",
+      "tagline": "Social module for a production mobile app",
+      "description": "I'm currently building the Community social module end to end on a BLoC architecture: feed, profiles, social following, advanced search and content creation. I integrate the client with a GraphQL API (Elixir/Ash) and have implemented an AI conversational assistant for content recommendation with intent detection."
+    },
+    "symphony": {
+      "title": "Symphony · AI agent orchestrator",
+      "tagline": "Autonomous coding-agent orchestration (Elixir/Phoenix)",
+      "description": "Adapted and extended Symphony (open source, Apache 2.0) into an orchestrator in Elixir/OTP + Phoenix LiveView that detects tasks, spins up isolated per-issue workspaces and launches agents (Codex/Claude) that resolve them and open PRs. Built the LiveView kanban board and encrypted credential management."
+    },
+    "aiagents": {
+      "title": "AI Coding Agents · Linear × Cursor",
+      "tagline": "AI agents (Linear + Cursor) on my repositories",
+      "description": "Set up and integrated Linear Agents and Cursor Background Agents with my repositories to automate development tasks: the agents pick up issues from Linear, resolve them in their Linux sandbox (where they can spin up and preview the app) and open the Pull Request on GitHub. For targets that require macOS + Xcode (Swift/iOS apps) I solved the incompatibility with an automated trigger that delegates execution to a local worker."
+    },
+    "nurseloop": {
+      "title": "NurseLoop · Multi-tenant platform",
+      "tagline": "Nursing staff management (Payload CMS)",
+      "description": "Multi-tenant platform for nursing care agencies: shift, appointment and staff-assignment management, with granular access control by organization type and role. The longest-running project of my experience, in a team of 4 on Payload CMS and TypeScript."
     },
     "gym": {
       "title": "Gym Vitality",
@@ -32,13 +55,22 @@
       "description": "Website for a barbershop with a work gallery, services and a contact section."
     }
   },
+  "certs": {
+    "title": "Certifications",
+    "issuer": "Anthropic Education",
+    "verify": "Verify",
+    "mcp": { "title": "Introduction to Model Context Protocol", "date": "Apr 2026" },
+    "skills": { "title": "Introduction to Agent Skills", "date": "Apr 2026" },
+    "claudecode": { "title": "Claude Code in Action", "date": "Apr 2026" },
+    "api": { "title": "Building with the Claude API", "date": "Apr 2026" }
+  },
   "about": {
     "title": "About me",
     "bioTitle": "Hi, I'm Cristian 👋",
-    "bio1": "Software developer experienced in building web and mobile applications end to end. I enjoy taking an idea from design to production, caring about the interface as much as the logic and the database.",
-    "bio2": "I hold a degree in Computer Science and work with the JavaScript ecosystem: React, Next.js, Node.js and React Native.",
+    "bio1": "Computer Science engineer focused on mobile development, backend services and AI-assisted development workflows. I've worked across the full lifecycle of production apps, from features in Flutter, Elixir/Ash and TypeScript to distribution on App Store Connect.",
+    "bio2": "I've built AI agent orchestrators integrated with Linear and GitHub to automate development tasks. In parallel I develop FinlyCR, my personal-finance app published on Google Play.",
     "nowLabel": "// Now",
-    "now": "Building <acc>FinlyCR</acc>, a personal finance platform on web and mobile.",
+    "now": "At <acc>Lambdo</acc> I build Flutter/iOS apps and Elixir/Ash backends; in parallel I develop <acc>FinlyCR</acc>.",
     "inProduction": "Live in production",
     "techLabel": "Technologies",
     "experienceLabel": "Experience",

@@ -1,12 +1,21 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import { FaGithub, FaExternalLinkAlt, FaGooglePlay } from "react-icons/fa";
+import {
+  FaGithub,
+  FaExternalLinkAlt,
+  FaGooglePlay,
+  FaRobot,
+  FaProjectDiagram,
+  FaUserNurse,
+  FaLock,
+} from "react-icons/fa";
+import { SiFlutter } from "react-icons/si";
 
 const featured = {
   title: "FinlyCR",
   img: require("../images/finlycr-web.png"),
   mobileImg: require("../images/finlycr-mobile.jpeg"),
-  tags: ["React", "Node.js", "MySQL", "Tailwind CSS", "React Native"],
+  tags: ["Next.js", "TypeScript", "React Native", "Expo", "Prisma", "Turso"],
   links: [
     { type: "web", href: "https://www.finlycr.com/" },
     {
@@ -17,25 +26,39 @@ const featured = {
   ],
 };
 
+// Proyectos profesionales (trabajo de empresa: sin enlaces públicos)
 const projects = [
   {
-    key: "gym",
-    img: require("../images/gym-vitality.png"),
-    tags: ["React", "Tailwind CSS"],
-    links: [
-      { type: "web", href: "https://gym-vitality.vercel.app/" },
-      { type: "github", href: "https://github.com/cristiancr20" },
-    ],
+    key: "community",
+    icon: SiFlutter,
+    company: true,
+    inProgress: true,
+    tags: ["Flutter", "BLoC", "GraphQL", "Elixir/Ash", "LLM"],
   },
   {
-    key: "barber",
-    img: require("../images/sharp-cuts.png"),
-    tags: ["Next.js", "Tailwind CSS"],
-    links: [
-      { type: "web", href: "https://sharp-cuts-barber.vercel.app/" },
-      { type: "github", href: "https://github.com/cristiancr20" },
-    ],
+    key: "symphony",
+    icon: FaRobot,
+    company: true,
+    tags: ["Elixir", "Phoenix LiveView", "OTP", "Vue.js"],
   },
+  {
+    key: "aiagents",
+    icon: FaProjectDiagram,
+    company: true,
+    tags: ["MCP", "Linear", "Cursor Agents", "GitHub"],
+  },
+  {
+    key: "nurseloop",
+    icon: FaUserNurse,
+    company: true,
+    tags: ["Payload CMS", "TypeScript", "Multi-tenant"],
+  },
+];
+
+// Proyectos de práctica (enlaces directos, de-enfatizados)
+const otros = [
+  { key: "gym", href: "https://gym-vitality.vercel.app/" },
+  { key: "barber", href: "https://sharp-cuts-barber.vercel.app/" },
 ];
 
 const linkMeta = {
@@ -82,26 +105,37 @@ function Tags({ tags }) {
   );
 }
 
-function ProjectCard({ title, img, description, tags, links }) {
+function ProjectCard({ icon: Icon, title, tagline, description, tags, inProgress }) {
+  const { t } = useTranslation();
   return (
     <article className="group bg-surface border border-line rounded-xl overflow-hidden hover:-translate-y-1 hover:border-accent/30 transition-all duration-300 h-full flex flex-col">
-      <div className="aspect-video overflow-hidden bg-surface-2">
-        <img
-          src={img}
-          alt={title}
-          className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+      {/* Cabecera de icono (proyectos sin captura pública) */}
+      <div className="relative aspect-[16/7] bg-gradient-to-br from-surface-2 to-[#101216] flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-0 grid-bg opacity-30" />
+        <Icon
+          size={40}
+          className="relative text-accent/80 group-hover:scale-110 transition-transform duration-500"
         />
+        {inProgress && (
+          <span className="absolute top-3 left-3 inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-wider text-green-300 bg-green-400/10 border border-green-400/25 px-2 py-1 rounded-md">
+            <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
+            {t("projects.inProgress")}
+          </span>
+        )}
+        <span className="absolute top-3 right-3 inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-wider text-muted bg-bg/60 border border-line px-2 py-1 rounded-md">
+          <FaLock size={9} /> {t("projects.companyBadge")}
+        </span>
       </div>
       <div className="p-5 flex flex-col gap-4 flex-1">
         <div>
-          <h3 className="font-display text-lg font-semibold text-content mb-2">
+          <h3 className="font-display text-lg font-semibold text-content mb-1">
             {title}
           </h3>
+          <p className="text-xs text-accent/90 mb-2">{tagline}</p>
           <p className="text-sm text-muted leading-relaxed">{description}</p>
         </div>
-        <Tags tags={tags} />
-        <div className="pt-3 mt-auto border-t border-line">
-          <LinkRow links={links} />
+        <div className="mt-auto pt-1">
+          <Tags tags={tags} />
         </div>
       </div>
     </article>
@@ -159,19 +193,41 @@ const Proyectos = () => {
         </div>
       </article>
 
-      {/* Grid de proyectos secundarios */}
+      {/* Grid de proyectos profesionales */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {projects.map((p, i) => (
           <div key={p.key} data-aos="fade-up" data-aos-delay={i * 80}>
             <ProjectCard
+              icon={p.icon}
               title={t(`projects.${p.key}.title`)}
+              tagline={t(`projects.${p.key}.tagline`)}
               description={t(`projects.${p.key}.description`)}
-              img={p.img}
               tags={p.tags}
-              links={p.links}
+              inProgress={p.inProgress}
             />
           </div>
         ))}
+      </div>
+
+      {/* Otros proyectos (práctica) */}
+      <div className="mt-12" data-aos="fade-up">
+        <p className="font-mono text-xs text-muted uppercase tracking-widest mb-4">
+          {t("projects.otrosLabel")}
+        </p>
+        <div className="flex flex-wrap gap-3">
+          {otros.map(({ key, href }) => (
+            <a
+              key={key}
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-sm text-muted bg-surface border border-line px-4 py-2 rounded-lg hover:text-accent hover:border-accent/30 transition-colors"
+            >
+              {t(`projects.${key}.title`)}
+              <FaExternalLinkAlt size={11} />
+            </a>
+          ))}
+        </div>
       </div>
     </section>
   );

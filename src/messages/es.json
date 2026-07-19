@@ -8,8 +8,8 @@
     "descargarCV": "Descargar CV"
   },
   "hero": {
-    "eyebrow": "Desarrollador de Software",
-    "intro": "Construyo aplicaciones web y móviles full-stack con <hl>React, Next.js y Node.js</hl>. Actualmente desarrollo <hl>FinlyCR</hl>, una plataforma de finanzas personales, ya disponible en web y en Google Play.",
+    "eyebrow": "Ingeniero de Software",
+    "intro": "Ingeniero en Ciencias de la Computación enfocado en <hl>desarrollo móvil (Flutter, React Native)</hl>, <hl>servicios backend (Elixir/Ash, Node.js)</hl> y flujos de desarrollo asistidos por <hl>agentes de IA</hl>. Actualmente en Lambdo y desarrollando FinlyCR, mi app de finanzas en Google Play.",
     "verProyectos": "Ver proyectos",
     "contacto": "Contacto"
   },
@@ -19,9 +19,32 @@
     "verSitio": "Ver sitio",
     "googlePlay": "Google Play",
     "github": "GitHub",
+    "companyBadge": "Proyecto de empresa",
+    "inProgress": "En desarrollo",
+    "otrosLabel": "Otros proyectos",
     "finly": {
       "tagline": "Plataforma de finanzas personales · web y móvil",
-      "description": "Aplicación full-stack para gestión de finanzas personales: registro de ingresos y egresos, cuentas bancarias, seguimiento de préstamos y suscripciones, con panel de estadísticas. Disponible como web (PWA) y app móvil publicada en Google Play."
+      "description": "Aplicación full-stack para gestión de finanzas personales: registro de ingresos, gastos, préstamos y suscripciones, con dashboard de gráficas, modo offline con cola de sincronización y multi-tenencia personal/familiar. Web en Next.js y app móvil en Expo/React Native publicada en Google Play, sobre una única base de datos Turso."
+    },
+    "community": {
+      "title": "Community · iTOVi × Droplii",
+      "tagline": "Módulo social para app móvil en producción",
+      "description": "Desarrollo actualmente el módulo social Community de extremo a extremo sobre una arquitectura BLoC: feed, perfiles, seguimiento social, búsqueda avanzada y creación de contenido. Integro el cliente con una API GraphQL (Elixir/Ash) y he implementado un asistente conversacional con IA para recomendación de contenido con detección de intención."
+    },
+    "symphony": {
+      "title": "Symphony · Orquestador de agentes de IA",
+      "tagline": "Orquestación autónoma de coding agents (Elixir/Phoenix)",
+      "description": "Adapté y extendí Symphony (open source, Apache 2.0) como orquestador en Elixir/OTP + Phoenix LiveView que detecta tareas, levanta workspaces aislados por issue y lanza agentes (Codex/Claude) que las resuelven y abren PRs. Construí el tablero kanban en LiveView y la gestión de credenciales cifradas."
+    },
+    "aiagents": {
+      "title": "AI Coding Agents · Linear × Cursor",
+      "tagline": "Agentes de IA (Linear + Cursor) sobre mis repositorios",
+      "description": "Configuré e integré Linear Agents y Cursor Background Agents con mis repositorios para automatizar tareas de desarrollo: los agentes toman issues desde Linear, los resuelven en su sandbox Linux (donde pueden levantar y previsualizar la app) y abren el Pull Request en GitHub. Para targets que exigen macOS + Xcode (apps Swift/iOS) resolví la incompatibilidad con un trigger automatizado que delega la ejecución a un worker local."
+    },
+    "nurseloop": {
+      "title": "NurseLoop · Plataforma multi-tenant",
+      "tagline": "Gestión de personal de enfermería (Payload CMS)",
+      "description": "Plataforma multi-tenant para agencias de cuidado de enfermería: administración de turnos, citas y asignación de personal, con control de acceso granular según tipo de organización y rol. El proyecto de mayor duración de mi experiencia, en un equipo de 4 sobre Payload CMS y TypeScript."
     },
     "gym": {
       "title": "Gym Vitality",
@@ -32,13 +55,22 @@
       "description": "Sitio web para barbería con galería de trabajos, servicios y sección de contacto."
     }
   },
+  "certs": {
+    "title": "Certificaciones",
+    "issuer": "Anthropic Education",
+    "verify": "Verificar",
+    "mcp": { "title": "Introduction to Model Context Protocol", "date": "abr. 2026" },
+    "skills": { "title": "Introduction to Agent Skills", "date": "abr. 2026" },
+    "claudecode": { "title": "Claude Code in Action", "date": "abr. 2026" },
+    "api": { "title": "Building with the Claude API", "date": "abr. 2026" }
+  },
   "about": {
     "title": "Sobre mí",
     "bioTitle": "Hola, soy Cristian 👋",
-    "bio1": "Desarrollador de software con experiencia construyendo aplicaciones web y móviles de principio a fin. Me gusta llevar una idea desde el diseño hasta producción, cuidando tanto la interfaz como la lógica y la base de datos.",
-    "bio2": "Soy Ingeniero en Ciencias de la Computación y trabajo con el ecosistema de JavaScript: React, Next.js, Node.js y React Native.",
+    "bio1": "Ingeniero en Ciencias de la Computación enfocado en desarrollo móvil, servicios backend y flujos de desarrollo asistidos por inteligencia artificial. He participado en el ciclo completo de aplicaciones en producción, desde funcionalidades en Flutter, Elixir/Ash y TypeScript hasta la distribución en App Store Connect.",
+    "bio2": "He implementado orquestadores de agentes de IA integrados con Linear y GitHub para automatizar tareas de desarrollo. En paralelo desarrollo FinlyCR, mi aplicación de finanzas personales publicada en Google Play.",
     "nowLabel": "// Ahora",
-    "now": "Desarrollando <acc>FinlyCR</acc>, una plataforma de finanzas personales en web y móvil.",
+    "now": "En <acc>Lambdo</acc> construyo apps Flutter/iOS y backends en Elixir/Ash; en paralelo desarrollo <acc>FinlyCR</acc>.",
     "inProduction": "Disponible en producción",
     "techLabel": "Tecnologías",
     "experienceLabel": "Experiencia",

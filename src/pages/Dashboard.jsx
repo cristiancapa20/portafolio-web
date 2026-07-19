@@ -3,6 +3,7 @@ import Navbar from "../components/Navbar";
 import { Inicio } from "./Inicio";
 import Proyectos from "./Proyectos";
 import Historia from "./Historia";
+import Certificaciones from "./Certificaciones";
 import Contacto from "./Contacto";
 
 function Dashboard() {
@@ -13,6 +14,7 @@ function Dashboard() {
         <Inicio />
         <Proyectos />
         <Historia />
+        <Certificaciones />
         <Contacto />
       </main>
     </div>

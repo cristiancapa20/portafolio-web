@@ -10,11 +10,13 @@ import {
   FaLock,
 } from "react-icons/fa";
 import { SiFlutter } from "react-icons/si";
+import finlyWeb from "../images/finlycr-web.png";
+import finlyMobile from "../images/finlycr-mobile.jpeg";
 
 const featured = {
   title: "FinlyCR",
-  img: require("../images/finlycr-web.png"),
-  mobileImg: require("../images/finlycr-mobile.jpeg"),
+  img: finlyWeb,
+  mobileImg: finlyMobile,
   tags: ["Next.js", "TypeScript", "React Native", "Expo", "Prisma", "Turso"],
   links: [
     { type: "web", href: "https://www.finlycr.com/" },

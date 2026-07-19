@@ -5,7 +5,7 @@ import { MdEmail } from "react-icons/md";
 import foto from "../images/cristian-capa.jpeg";
 
 const socials = [
-  { icon: FaGithub, href: "https://github.com/cristiancr20", label: "GitHub" },
+  { icon: FaGithub, href: "https://github.com/cristiancapa20", label: "GitHub" },
   {
     icon: FaLinkedin,
     href: "https://www.linkedin.com/in/cristian-capa-834243205/",

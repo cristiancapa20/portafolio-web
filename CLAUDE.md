@@ -11,16 +11,17 @@ npm run build     # build de producción → ./build
 npm run preview   # sirve el build ya generado
 ```
 
-No hay linter, formateador ni tests configurados. Existen dependencias de `@testing-library/*` heredadas de Create React App pero no hay archivos de test ni script `test`; si se añaden tests hay que instalar y configurar un runner (Vitest) desde cero.
+No hay linter, formateador ni tests configurados; si se añaden tests hay que instalar y configurar un runner (Vitest) desde cero.
+
+Las dependencias están en cero vulnerabilidades (`npm audit`). El árbol se mantiene deliberadamente mínimo: se eliminaron `@testing-library/*`, `web-vitals` y `react-router-dom` por no usarse. Antes de añadir una dependencia, verifica que realmente se importe.
 
 ## Arquitectura
 
 Portafolio personal de Cristian Capa: SPA de React 17 + Vite + Tailwind, **una sola página** con secciones ancladas.
 
 - `src/index.jsx` es el entry point declarado en `index.html` (`<script type="module" src="/src/index.jsx">`). Usa la API antigua `ReactDOM.render` (React 17, no `createRoot`) e inicializa AOS globalmente aquí.
-- `src/App.jsx` define una única ruta `/` → `Dashboard`. React Router está presente pero prácticamente sin usar.
-- `src/pages/Dashboard.jsx` compone en orden las secciones de la landing: `Inicio` → `Proyectos` → `Historia` → `Certificaciones` → `Contacto`. Cada "page" es en realidad una sección con un `id` usado como ancla.
-- `src/pages/NotFound.jsx` + `NotFound.css` son código muerto: no están enrutados.
+- `src/App.jsx` solo renderiza `Dashboard`. **No hay router**: se eliminó `react-router-dom` porque la app es una sola pantalla, así que cualquier path sirve la misma landing. Si algún día hacen falta rutas reales, hay que reintroducir el router (y `react-router-dom@7` exige React ≥18, lo que implica migrar `ReactDOM.render` a `createRoot`).
+- `src/pages/Dashboard.jsx` compone en orden las secciones de la landing: `Inicio` → `Proyectos` → `Historia` → `Certificaciones` → `Contacto`. Cada "page" es en realidad una sección con un `id` usado como ancla, no una ruta.
 
 ### Navegación por anclas
 

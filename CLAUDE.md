@@ -17,10 +17,10 @@ Las dependencias están en cero vulnerabilidades (`npm audit`). El árbol se man
 
 ## Arquitectura
 
-Portafolio personal de Cristian Capa: SPA de React 17 + Vite + Tailwind, **una sola página** con secciones ancladas.
+Portafolio personal de Cristian Capa: SPA de React 18 + Vite + Tailwind, **una sola página** con secciones ancladas.
 
-- `src/index.jsx` es el entry point declarado en `index.html` (`<script type="module" src="/src/index.jsx">`). Usa la API antigua `ReactDOM.render` (React 17, no `createRoot`) e inicializa AOS globalmente aquí.
-- `src/App.jsx` solo renderiza `Dashboard`. **No hay router**: se eliminó `react-router-dom` porque la app es una sola pantalla, así que cualquier path sirve la misma landing. Si algún día hacen falta rutas reales, hay que reintroducir el router (y `react-router-dom@7` exige React ≥18, lo que implica migrar `ReactDOM.render` a `createRoot`).
+- `src/index.jsx` es el entry point declarado en `index.html` (`<script type="module" src="/src/index.jsx">`). Monta con `createRoot` (React 18) e inicializa AOS globalmente aquí, antes del render.
+- `src/App.jsx` solo renderiza `Dashboard`. **No hay router**: se eliminó `react-router-dom` porque la app es una sola pantalla, así que cualquier path sirve la misma landing. Si algún día hacen falta rutas reales, `react-router-dom@7` ya es compatible con la versión de React actual.
 - `src/pages/Dashboard.jsx` compone en orden las secciones de la landing: `Inicio` → `Proyectos` → `Historia` → `Certificaciones` → `Contacto`. Cada "page" es en realidad una sección con un `id` usado como ancla, no una ruta.
 
 ### Navegación por anclas
@@ -43,7 +43,7 @@ Tailwind con tema oscuro definido en `tailwind.config.js`. Usar siempre los toke
 
 `src/index.css` aporta las clases utilitarias propias `hero-glow` y `grid-bg`, el scrollbar personalizado y un bloque `prefers-reduced-motion`.
 
-Animaciones de entrada con AOS: atributos `data-aos="fade-up"` y `data-aos-delay` en el markup (config global `duration: 600, once: true` en `index.jsx`).
+Animaciones de entrada con AOS: atributos `data-aos="fade-up"` y `data-aos-delay` en el markup (config global `duration: 600, once: true` en `index.jsx`). Ojo al inspeccionar o automatizar la página: todo `[data-aos]` arranca en `opacity: 0` y solo se revela cuando AOS añade `.aos-animate` al recibir un **evento de scroll real**; un `window.scrollTo()` programático no lo dispara y da la falsa impresión de que el contenido no renderiza.
 
 ### Assets
 

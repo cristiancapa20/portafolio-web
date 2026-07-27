@@ -20,8 +20,11 @@
     "googlePlay": "Google Play",
     "github": "GitHub",
     "companyBadge": "Proyecto de empresa",
+    "openSourceBadge": "Código abierto",
     "inProgress": "En desarrollo",
-    "otrosLabel": "Otros proyectos",
+    "filterAll": "Todos",
+    "filterCompany": "De empresa",
+    "filterPersonal": "Personales",
     "finly": {
       "tagline": "Plataforma de finanzas personales · web y móvil",
       "description": "Aplicación full-stack para gestión de finanzas personales: registro de ingresos, gastos, préstamos y suscripciones, con dashboard de gráficas, modo offline con cola de sincronización y multi-tenencia personal/familiar. Web en Next.js y app móvil en Expo/React Native publicada en Google Play, sobre una única base de datos Turso."
@@ -46,13 +49,15 @@
       "tagline": "Gestión de personal de enfermería (Payload CMS)",
       "description": "Plataforma multi-tenant para agencias de cuidado de enfermería: administración de turnos, citas y asignación de personal, con control de acceso granular según tipo de organización y rol. El proyecto de mayor duración de mi experiencia, en un equipo de 4 sobre Payload CMS y TypeScript."
     },
-    "gym": {
-      "title": "Gym Vitality",
-      "description": "Landing page para gimnasio con secciones de servicios, planes y contacto."
+    "passwordsave": {
+      "title": "Password Save",
+      "tagline": "Gestor de contraseñas zero-knowledge",
+      "description": "Gestor de contraseñas personal donde el servidor nunca puede leer los datos: la llave se deriva de la master password con PBKDF2 y el cifrado ocurre íntegramente en el navegador con Web Crypto. Incluye códigos 2FA (TOTP) por entrada, cambio de master password, backup cifrado exportable y despliegue con Docker, sobre Next.js 15 y Prisma con una suite de tests en Vitest."
     },
-    "barber": {
-      "title": "Barber Shop",
-      "description": "Sitio web para barbería con galería de trabajos, servicios y sección de contacto."
+    "catalogskills": {
+      "title": "Catalog Skills",
+      "tagline": "Catálogo de skills de Claude Code",
+      "description": "Herramienta de línea de comandos que escanea las skills y slash commands instalados en tu máquina, deduce de dónde vino cada uno a partir de evidencia verificable (no de heurísticas), comprueba si los binarios que necesitan están instalados y lo renderiza todo en un HTML autocontenido. Sin dependencias y funciona en macOS, Linux y Windows."
     }
   },
   "certs": {

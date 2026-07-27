@@ -20,8 +20,11 @@
     "googlePlay": "Google Play",
     "github": "GitHub",
     "companyBadge": "Company project",
+    "openSourceBadge": "Open source",
     "inProgress": "In progress",
-    "otrosLabel": "Other projects",
+    "filterAll": "All",
+    "filterCompany": "Company",
+    "filterPersonal": "Personal",
     "finly": {
       "tagline": "Personal finance platform · web and mobile",
       "description": "Full-stack app for personal finance management: income, expenses, loans and subscriptions, with a charts dashboard, offline mode with a sync queue and personal/family multi-tenancy. Web in Next.js and a mobile app in Expo/React Native published on Google Play, over a single Turso database."
@@ -46,13 +49,15 @@
       "tagline": "Nursing staff management (Payload CMS)",
       "description": "Multi-tenant platform for nursing care agencies: shift, appointment and staff-assignment management, with granular access control by organization type and role. The longest-running project of my experience, in a team of 4 on Payload CMS and TypeScript."
     },
-    "gym": {
-      "title": "Gym Vitality",
-      "description": "Landing page for a gym with sections for services, plans and contact."
+    "passwordsave": {
+      "title": "Password Save",
+      "tagline": "Zero-knowledge password manager",
+      "description": "A personal password manager where the server can never read your data: the key is derived from the master password with PBKDF2 and encryption happens entirely in the browser with Web Crypto. It includes per-entry 2FA (TOTP) codes, master-password rotation, an exportable encrypted backup and Docker deployment, on Next.js 15 and Prisma with a Vitest test suite."
     },
-    "barber": {
-      "title": "Barber Shop",
-      "description": "Website for a barbershop with a work gallery, services and a contact section."
+    "catalogskills": {
+      "title": "Catalog Skills",
+      "tagline": "A catalogue of your Claude Code skills",
+      "description": "A command-line tool that scans the skills and slash commands installed on your machine, works out where each one came from from verifiable evidence (not heuristics), checks whether the binaries they need are actually installed, and renders it all as a self-contained HTML page. No dependencies, and it runs on macOS, Linux and Windows."
     }
   },
   "certs": {
